@@ -1,0 +1,77 @@
+    <!-- box-shadow :mat-elevation-z6-->
+<mat-toolbar color="primary" class="mat-elevation-z6"> 
+    <button mat-icon-button (click)="drawer.toggle()">
+        <mat-icon 
+        aria-hidden="false" 
+        aria-label="Example home icon" 
+        fontIcon="menu"
+        
+     ></mat-icon>
+        <!-- aria is an attribute and set this 
+            property because our icon is conveying some information -->
+    </button>
+    <span>Material UI Tutorial</span>
+    <span class="examle-spacerp"></span>   <!-- space between buttons and span-->
+    <button mat-button color="warn" routerLink="home">Home</button>
+    <button mat-button [matMenuTriggerFor]="submenu">Master</button>
+    <mat-menu #submenu>
+        <button mat-menu-item [matMenuTriggerFor]="company">Comapany</button>
+        <mat-menu #company>
+                <button mat-menu-item>one</button>
+                <button mat-menu-item>two</button>
+        </mat-menu>
+
+        <button mat-menu-item [matMenuTriggerFor]="customer">Customer</button>
+        <mat-menu #customer>
+            <button mat-menu-item>one</button>
+            <button mat-menu-item>two</button>
+        </mat-menu>
+        <button mat-menu-item [matMenuTriggerFor]="products">Products</button>
+        <mat-menu #products>
+            <button mat-menu-item>one</button>
+            <button mat-menu-item>two</button>
+        </mat-menu>
+    </mat-menu>
+
+    <button mat-button routerLink="input" >Input</button>
+    <button mat-button routerLink="auto" >Autocomplete</button>
+    <button mat-raised-button color="warn">SignUp</button>
+    <button mat-icon-button (click)="hideBadge()">
+        <mat-icon matBadge="15" [matBadgeHidden]="badgeDisplay" matBadgeColor="warn" matBadgeSize="small">add_alert</mat-icon>
+      </button>
+</mat-toolbar>
+
+
+<mat-drawer-container autosize>
+    <mat-drawer #drawer opened="true" mode="side" position="start">   <!-- mode : over,side,push   || position="end"  || opened : true , false-->
+        <mat-nav-list>
+                <mat-list-item>
+                    <button routerLink="card" mat-button><mat-icon>dashboard</mat-icon> Dashboard</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button><mat-icon>home</mat-icon> Home</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button (click)="snack()"  routerLink="table"><mat-icon>settings</mat-icon>Table</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button routerLink="slider"><mat-icon>help</mat-icon>Slider</button>
+                </mat-list-item>
+                <mat-list-item>
+                    <button mat-button routerLink="form" ><mat-icon>analytics</mat-icon> Form</button>
+                </mat-list-item>
+        </mat-nav-list>
+
+    </mat-drawer>
+
+
+
+    <mat-drawer-content>
+        <div style="text-align: center;min-height: 600px;">
+            <router-outlet></router-outlet>
+        </div>
+
+    </mat-drawer-content>
+
+</mat-drawer-container>
+

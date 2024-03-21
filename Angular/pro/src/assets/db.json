@@ -1,0 +1,48 @@
+{
+    "associate" : [
+    {
+        "id":1,
+        "name":"ravi",
+        "address":[]
+    },
+    {
+        "id":2,
+        "name":"kumar",
+        "address":[]
+    },
+    {
+        "id":3,
+        "name":"Yadav",
+        "address":[]
+    },
+    {
+        "id":4,
+        "name":"advet",
+        "address":[]
+    }
+
+    ],
+    "country":[
+        {
+            "id":"india",
+            "name":"India"
+        },
+        {
+            "id":"italy",
+            "name":"Italy"
+        },
+        {
+            "id":"iceland",
+            "name":"Iceland"
+        },
+        {
+            "id":"cuba",
+            "name":"Cuba"
+        },
+        {
+            "id":"china",
+            "name":"China"
+        }
+       
+    ]
+}

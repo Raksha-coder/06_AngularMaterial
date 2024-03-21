@@ -1,0 +1,20 @@
+<div>
+  <h1>Auto Complete</h1>
+
+
+  <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <input matInput [matAutocomplete]="auto" [formControl]="formcontrol" />   <!--it is necessary =>  [matAutocomplete]="auto" -->
+      </mat-form-field>
+  
+      <mat-autocomplete autoActiveFirstOption #auto>
+              <mat-option *ngFor="let color of filterOptions|async"  [value]="color">{{color}}</mat-option>
+        </mat-autocomplete>
+  </form>
+</div>
+
+<div>
+  
+</div>
+
+

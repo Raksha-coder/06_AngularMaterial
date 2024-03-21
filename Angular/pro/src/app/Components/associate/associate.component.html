@@ -1,0 +1,55 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <mat-card>
+        <mat-card-content>
+
+            <mat-form-field class="mat-50">
+                <mat-label>Associate</mat-label>
+                <mat-select formControlName="id">    <!--  id -->
+                    <mat-option [value]="item.id" *ngFor="let item of associateList">{{item.name}}</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <a (click)="addAddress()" mat-raised-button color="primary" >Add Address</a>
+            
+            <div formArrayName="address">  <!--formGroupName:line1,fulladdress,country-->
+                <mat-card *ngFor="let item of getaddress.controls;let i=index" [formGroupName]="i" class="mat-elevation-z8">  <!--we use this class for applying shadow-->
+                    <mat-card-content>
+                        <h1>Address - {{i+1}}</h1>
+                        
+                        <mat-form-field class="mat-50">
+                            <mat-label>Title</mat-label>
+                            <input matInput formControlName="title"/>
+                        </mat-form-field>
+
+                        <mat-form-field class="mat-50">
+                            <mat-label>Country</mat-label>
+                            <input (keyup)="autochange(i)" matInput formControlName="country"   [matAutocomplete]="auto" />
+                            <mat-autocomplete #auto>
+                                    <mat-option [value]="item.id" *ngFor="let item of filterOptions" >{{item.name}}</mat-option>
+                            </mat-autocomplete>
+
+                        </mat-form-field>
+
+                        <mat-form-field>
+                            <mat-label>Full Address</mat-label>
+                            <textarea matInput></textarea>
+                            <input matInput formControlName="fullAddress" />
+                        </mat-form-field>
+
+                    </mat-card-content>
+                </mat-card>
+            </div>
+
+
+
+
+
+        </mat-card-content>
+
+        <mat-card-actions>
+            <button type="submit" mat-raised-button color="primary">Save</button>
+        </mat-card-actions>
+
+      
+    </mat-card>
+</form>

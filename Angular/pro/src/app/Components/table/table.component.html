@@ -1,0 +1,70 @@
+<mat-card>
+    
+    
+    <mat-card-header>
+        <mat-form-field>
+            <input matInput (keyup)="Filterchange($event)" placeholder="Enter the text">
+        </mat-form-field>
+            <button style="margin-left: 60%;" mat-raised-button color="primary" (click)="addcars()">Add User (+)</button>
+    </mat-card-header>
+
+    <mat-card-content>
+
+ 
+
+<!-- sorting : matSort -->
+            <table matSort mat-table [dataSource]="Source" class="mat-elevation-z8">
+
+                <!-- for each column -->
+                <ng-container matColumnDef="Id" >
+                    <th mat-sort-header mat-header-cell  *matHeaderCellDef>Id</th>
+                    <td mat-cell *matCellDef="let element">{{element.id}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="NAME" >
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef>Name</th>
+                    <td mat-cell *matCellDef="let element">{{element.name}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="CONTACT_DETAILS" >
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef>ContactDetails</th>
+                    <td mat-cell *matCellDef="let element">{{element.contactDetails}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="PRICE" >
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef>Price</th>
+                    <td mat-cell *matCellDef="let element">{{element.price}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="CATEGORIES" >
+                    <th mat-sort-header mat-header-cell *matHeaderCellDef>Category</th>
+                    <td mat-cell *matCellDef="let element">{{element.category}}</td>
+                </ng-container>
+
+
+
+                <ng-container matColumnDef="ACTION" >
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let element">
+                            <button mat-raised-button color="primary" (click)="edit(element.id)">Edit</button>
+                            <button mat-raised-button color="warn">Delete</button>
+                    </td>
+                </ng-container>
+
+
+
+                <!-- for every row -->
+                <tr mat-header-row *matHeaderRowDef="displayColumn"></tr>
+                <tr mat-row *matRowDef="let row;columns:displayColumn"></tr>
+            </table>
+
+</mat-card-content>
+
+<mat-card-footer>
+    <!-- pagination -->
+        <mat-paginator [pageSizeOptions]="[2,4,6,8]">
+        </mat-paginator>
+</mat-card-footer>
+</mat-card>
+
+<app-loader></app-loader>
